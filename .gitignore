@@ -1,3 +1,12 @@
 node_modules
 build
 static
+
+.idea
+!.idea/codeStyles/
+!.idea/codeStyles/*
+!.idea/checkstyle-idea.xml
+!.idea/codeInsightSettings.xml
+!.idea/codeStyleSettings.xml
+!.idea/inspectionProfiles
+!.idea/inspectionProfiles/Project_Default.xml

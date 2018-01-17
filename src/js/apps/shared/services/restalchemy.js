@@ -193,6 +193,7 @@ app.factory("restalchemy", [ "$rootScope", "$http", "$q", "$timeout", function($
 
 		// Wrap the get call in a function so we can recall it from inside itself when a 500 occurs or auth is required
 		var callGet = function() {
+			$http.defaults.withCredentials = true;
 			$http.get($this.endpoint, { params: params, cache: false, responseType: "json", timeout: callList[cacheName].deferred.promise, headers: $this.config.headers }).success(function(data, status, headers, config) {
 				// Look for a matching cache config for this endpoint
 				var cacheInfo = getEndpointCacheInfo($this.config.root, $this.endpoint);
@@ -275,6 +276,7 @@ app.factory("restalchemy", [ "$rootScope", "$http", "$q", "$timeout", function($
 			config.headers = {};
 
 		angular.extend(config.headers, $this.config.headers);
+		$http.defaults.withCredentials = true;
 		$http.post($this.endpoint, postdata, config).success(function(data, status, headers, config) {
 			// Invalidate any cached data that matches this endpoint
 			invalidateCachedEndpoints($this.config.root, $this.endpoint);
@@ -300,6 +302,7 @@ app.factory("restalchemy", [ "$rootScope", "$http", "$q", "$timeout", function($
 
 	// Put request with built in retry and error handling
 	var httpPut = function($this, putdata, params) {
+		$http.defaults.withCredentials = true;
 		$http.put($this.endpoint, putdata, { params: params, responseType: "json", headers: $this.config.headers }).success(function(data, status, headers, config) {
 			// Invalidate any cached data that matches this endpoint
 			invalidateCachedEndpoints($this.config.root, $this.endpoint);
@@ -328,6 +331,7 @@ app.factory("restalchemy", [ "$rootScope", "$http", "$q", "$timeout", function($
 
 	// Delete request with built in retry and error handling
 	var httpDelete = function($this, params) {
+		$http.defaults.withCredentials = true;
 		$http.delete($this.endpoint, { params: params, responseType: "json", headers: $this.config.headers }).success(function(data, status, headers, config) {
 			// Invalidate any cached data that matches this endpoint
 			invalidateCachedEndpoints($this.config.root, $this.endpoint);

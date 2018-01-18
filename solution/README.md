@@ -1,4 +1,5 @@
-##Prerequisites
+Prerequisites
+=
 Start MySQL server, login, create new database and user:
 ```mysql
 create database solution;
@@ -8,17 +9,20 @@ grant all on solution.* to 'solution'@'localhost';
 If needed, MySQL server details can be changed in `solution/src/main/resources/application.properties`, 
 property `spring.datasource.url`.
 
-##Compile
+Compile
+=
 ```bash
 ./mvnw package
 ```
 
-##Run
+Run
+=
 ```bash
 java - jar target/solution-0.0.1-SNAPSHOT.jar
 ```
 
-##Details
+Details
+=
 The application is written in latest stable Spring Boot (`1.5.9.RELEASE`). Most of the services come with tests.
 
 Application uses following techniques/frameworks/libraries:
@@ -35,7 +39,8 @@ from `localhost:8080` which is the address of the started gulp server.
 - `JUnitParams` - for easy testing of multiple variable scenarios without duplication
 - `Mockito` & `AssertJ` - for mocking beans and fluent assertions
 
-###Tasks covered:
+Tasks covered:
+-
 - User story 1: user can save new expenses. Extras:
   - Angular code modified to use HTML5 datepicker
   - Display server validation errors (e.g. date set in the future)
